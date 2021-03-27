@@ -56,25 +56,4 @@ DefaultProperties
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_longsword_png"
         )};
-    Skins(1)={(
-        SkeletalMeshPath="WP_15hs_Longsword_Variant_01.Materials.WEP_Longsword",
-        StaticMeshPath="WP_15hs_Longsword_Variant_01.sm_Longsword",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_hounds_longsword_png"
-        )};
-    Skins(2)={(
-        SkeletalMeshPath="WP_15hs_Longsword_Variant_02.WEP_15hs_Longsword_Variant_01",
-        StaticMeshPath="WP_15hs_Longsword_Variant_02.SM_15hs_Longsword_Variant_01",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_styrian_png"
-        )};
-    Skins(3)={(
-        SkeletalMeshPath="WP_15hs_Longsword_Variant_03.Meshes.Wep_SK_OrnamentalLongsword",
-        StaticMeshPath="WP_15hs_Longsword_Variant_03.Meshes.Wep_SM_OrnamentalLongsword",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_ornamental_png"
-        )};
 }

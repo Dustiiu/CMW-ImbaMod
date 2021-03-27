@@ -39,11 +39,5 @@ DefaultProperties
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_short_spear_png"
         )};
-    Skins(1)={(
-        SkeletalMeshPath="WP_jav_ShortSpear_variant_01.WEP_ShortSpear",
-        StaticMeshPath="WP_jav_ShortSpear_variant_01.SM_shortspear",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_sharktooth_png"
-        )};
+
 }

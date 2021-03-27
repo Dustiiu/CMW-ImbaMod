@@ -39,18 +39,4 @@ DefaultProperties
         ImagePath="ui_custweaponimages_swf.skin_sword_of_war_png"
         )};
 
-    Skins(1)={(
-        SkeletalMeshPath="WP_15hs_SwordOfWar_Variant_01.WEP_FinalGuardSword",
-        StaticMeshPath="WP_15hs_SwordOfWar_Variant_01.SM_FinalGuardSword",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="ui_custweaponimages_swf.skin_final_guard_png"
-        )};
-    Skins(2)={(
-        SkeletalMeshPath="WP_15hs_SWordOfWar_Varaint_02.wep_swordofwar_variant_01",
-        StaticMeshPath="WP_15hs_SWordOfWar_Varaint_02.sm_swordofwar_variant_01",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="ui_custweaponimages_swf.skin_final_guard_png"
-        )};
 }

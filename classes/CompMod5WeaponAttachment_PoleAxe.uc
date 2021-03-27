@@ -49,7 +49,7 @@ DefaultProperties
     AttackTypeInfo(4)=(fBaseDamage=0.0, fForce=35500, cDamageType="AOC.AOCDmgType_SwingBlunt", iWorldHitLenience=6)
     AttackTypeInfo(5)=(fBaseDamage=5.0, fForce=45500.0, cDamageType="AOC.AOCDmgType_Shove", iWorldHitLenience=12)
 
-        Skins.Empty;
+    Skins.Empty;
     Skins(0)={(
 
         SkeletalMeshPath="WP_2ha_Pollaxe.WEP_Pollaxe",
@@ -57,13 +57,5 @@ DefaultProperties
         MaterialPath="",
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_bardiche_png"
-        )};
-        
-    Skins(1)={(
-        SkeletalMeshPath="WP_2ha_Pollaxe_variant_01.SK_WEP_LeoPoleaxe",
-        StaticMeshPath="WP_2ha_Pollaxe_variant_01.SM_WEP_LeoPoleaxe",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="ui_custweaponimages_swf.skin_leo_axe_png"
         )};
 }

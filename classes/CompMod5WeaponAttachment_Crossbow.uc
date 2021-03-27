@@ -76,7 +76,7 @@ DefaultProperties
     WeaponSocket=CrossBowPoint
     bHasAmmo=true
 
-        Skins.Empty;
+    Skins.Empty;
     Skins(0)={(
 
         SkeletalMeshPath="WP_xbw_Crossbow.WEP_Crossbow",
@@ -84,13 +84,6 @@ DefaultProperties
         MaterialPath="",
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_crossbow_png"
-        )};
-    Skins(1)={(
-        SkeletalMeshPath="WP_xbw_crossbow_variant_01.WEP_SK_viper_crossbow",
-        StaticMeshPath="WP_xbw_crossbow_variant_01.SM_viper_crossbow",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_hawkeye_crossbow_png"
         )};
 }
 

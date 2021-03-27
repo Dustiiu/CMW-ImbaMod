@@ -48,7 +48,7 @@ DefaultProperties
     AttackTypeInfo(4)=(fBaseDamage=0.0, fForce=32500, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)
     AttackTypeInfo(5)=(fBaseDamage=5.0, fForce=45500.0, cDamageType="AOC.AOCDmgType_Shove", iWorldHitLenience=12)
 
-        Skins.Empty;
+    Skins.Empty;
     Skins(0)={(
 
         SkeletalMeshPath="WP_hbl_grandmace.WEP_grand-mace",
@@ -56,12 +56,5 @@ DefaultProperties
         MaterialPath="",
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_grand_mace_png"
-        )};
-    Skins(1)={(
-        SkeletalMeshPath="WP_hbl_grandmace_variant_01.Mesh.wep_grand-mace_variant_01",
-        StaticMeshPath="WP_hbl_grandmace_variant_01.Mesh.SM_grandmace_variant_01",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_crushing_mace_png"
         )};
 }

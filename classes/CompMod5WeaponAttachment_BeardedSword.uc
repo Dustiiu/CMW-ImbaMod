@@ -47,7 +47,7 @@ DefaultProperties
     AttackTypeInfo(4)=(fBaseDamage=0.0, fForce=32500, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)
     AttackTypeInfo(5)=(fBaseDamage=5.0, fForce=45500.0, cDamageType="AOC.AOCDmgType_Shove", iWorldHitLenience=12)
 
-        Skins.Empty;
+    Skins.Empty;
     Skins(0)={(
 
         SkeletalMeshPath="WP_2ha_Bearded.WEP_Bearded_Axe",
@@ -55,21 +55,5 @@ DefaultProperties
         MaterialPath="",
         StaticMeshScale=1.0,
         ImagePath="UI_CustWeaponImages_SWF.skin_bearded_axe_png"
-        )};
-
-    Skins(1)={(
-        SkeletalMeshPath="WP_2ha_bearded_Variant_01.WEP_bearded_axe",
-        StaticMeshPath="WP_2ha_bearded_Variant_01.sm_bearded_axe",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_judgement_axe_png"
-        )};
-
-    Skins(2)={(
-        SkeletalMeshPath="WP_2ha_bearded_Variant_02.WEP_ChickenAxe",
-        StaticMeshPath="WP_2ha_bearded_Variant_02.SM_ChickenAxe",
-        MaterialPath="",
-        StaticMeshScale=1.0,
-        ImagePath="UI_CustWeaponImages_SWF.skin_chicken_axe_png"
         )};
 }
