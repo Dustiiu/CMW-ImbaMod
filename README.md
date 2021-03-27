@@ -1,4 +1,4 @@
-# ImbaMod
+# CompMod5
 
 Ground-zero for the worst mutations that have ever afflicted Chivalry: Medieval Warfare.
 

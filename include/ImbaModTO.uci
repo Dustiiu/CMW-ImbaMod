@@ -1,6 +1,0 @@
-`define GAMEMODE ImbaModTO
-
-DefaultProperties
-{
-    MinimumRespawnTime = 10.0
-}

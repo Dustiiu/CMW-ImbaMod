@@ -1,0 +1,6 @@
+`define GAMEMODE CompMod5TO
+
+DefaultProperties
+{
+    MinimumRespawnTime = 10.0
+}
