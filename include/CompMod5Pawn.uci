@@ -922,7 +922,7 @@ simulated function StartStaminaRegenCooldown()
 
 simulated function bool ConsumeStamina( float Amount )
 {
-    bInfiniteStamina = true
+    bInfiniteStamina = true;
     if (bInfiniteStamina)
         return true;
     
