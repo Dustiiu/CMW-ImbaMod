@@ -9,15 +9,15 @@ DefaultProperties
     NewPrimaryWeapons(3)=(CWeapon=class'CompMod5Weapon_Crossbow',CForceTertiary=(class'AOCWeapon_PaviseShield_Agatha',class'AOCWeapon_ExtraAmmo'))
     NewPrimaryWeapons(4)=(CWeapon=class'CompMod5Weapon_LightCrossbow',CForceTertiary=(class'AOCWeapon_PaviseShield_Agatha',class'AOCWeapon_ExtraAmmo'))
     NewPrimaryWeapons(5)=(CWeapon=class'CompMod5Weapon_HeavyCrossbow',CForceTertiary=(class'AOCWeapon_PaviseShield_Agatha',class'AOCWeapon_ExtraAmmo'))
-    NewPrimaryWeapons(6)=(CWeapon=class'CompMod5Weapon_Sling',CForceTertiary=(class'AOCWeapon_ProjPebble',class'AOCWeapon_ProjLeadBall'))
+    //NewPrimaryWeapons(6)=(CWeapon=class'CompMod5Weapon_Sling',CForceTertiary=(class'AOCWeapon_ProjPebble',class'AOCWeapon_ProjLeadBall'))
 
     NewSecondaryWeapons.empty;
-    NewSecondaryWeapons(0)=(CWeapon=class'CompMod5Weapon_BroadDagger')
-    NewSecondaryWeapons(1)=(CWeapon=class'CompMod5Weapon_HuntingKnife')
-    NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_ThrustDagger')
-    NewSecondaryWeapons(3)=(CWeapon=class'CompMod5Weapon_Dagesse')
-    NewSecondaryWeapons(4)=(CWeapon=class'CompMod5Weapon_Saber')
-    NewSecondaryWeapons(5)=(CWeapon=class'CompMod5Weapon_Cudgel')
+    //NewSecondaryWeapons(0)=(CWeapon=class'CompMod5Weapon_BroadDagger')
+    //NewSecondaryWeapons(1)=(CWeapon=class'CompMod5Weapon_HuntingKnife')
+    //NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_ThrustDagger')
+    NewSecondaryWeapons(0)=(CWeapon=class'CompMod5Weapon_Dagesse')
+    //NewSecondaryWeapons(4)=(CWeapon=class'CompMod5Weapon_Saber')
+    //NewSecondaryWeapons(5)=(CWeapon=class'CompMod5Weapon_Cudgel')
 
     NewTertiaryWeapons.empty;
     NewTertiaryWeapons(0)=(CWeapon=class'AOCWeapon_PaviseShield_Agatha',bEnabledDefault=false)
