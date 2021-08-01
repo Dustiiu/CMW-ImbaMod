@@ -18,7 +18,7 @@ No shields, no firepots, dodge cooldown at 1.5s
 No javelins.
 Knight and vanguard only have throwing axe as tertiary.
 MAA only has knives as tertiary.
-Parry costs no stamina
+Parry gives 1 stam
 No stun (from stamina)
 Killing somebody gives you 50 stam, but you cannot get stunned
 Feints cost 15 stam
