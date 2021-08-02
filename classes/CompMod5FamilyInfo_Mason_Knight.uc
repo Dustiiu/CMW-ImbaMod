@@ -4,7 +4,7 @@ DefaultProperties
 {
     NewPrimaryWeapons.empty;
     //NewPrimaryWeapons(0)=(CWeapon=class'CompMod5Weapon_DoubleAxe')
-    //NewPrimaryWeapons(1)=(CWeapon=class'CompMod5Weapon_PoleAxe')
+    NewPrimaryWeapons(1)=(CWeapon=class'CompMod5Weapon_PoleAxe')
     //NewPrimaryWeapons(2)=(CWeapon=class'CompMod5Weapon_Bearded')
     //NewPrimaryWeapons(3)=(CWeapon=class'CompMod5Weapon_WarHammer')
     //NewPrimaryWeapons(4)=(CWeapon=class'CompMod5Weapon_Maul')
@@ -21,8 +21,8 @@ DefaultProperties
     //NewSecondaryWeapons(4)=(CWeapon=class'CompMod5Weapon_Falchion')
     //NewSecondaryWeapons(5)=(CWeapon=class'CompMod5Weapon_NorseSword')
     //NewSecondaryWeapons(6)=(CWeapon=class'CompMod5Weapon_Hatchet')
-    NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_WarAxe')
-    //NewSecondaryWeapons(8)=(CWeapon=class'CompMod5Weapon_Dane')
+    //NewSecondaryWeapons(7)=(CWeapon=class'CompMod5Weapon_WarAxe')
+    NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_Dane')
 
 
     NewTertiaryWeapons.empty;

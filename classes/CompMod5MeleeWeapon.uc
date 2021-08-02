@@ -23,7 +23,7 @@ simulated state ParryRelease
         if (bSuccessfulParry && bParryHitCounter && FireModeNum == Attack_Parry) {
             ClearTimer('PlayRiposteAnimation');
             ClearTimer('OnStateAnimationEnd');
-            AOCOwner.ConsumeStamina(iFeintStaminaCost);
+            //AOCOwner.ConsumeStamina(iFeintStaminaCost);
             ActivateParry();
             if (WorldInfo.NetMode != NM_Standalone && (Worldinfo.NetMode != NM_ListenServer || !AOCOwner.IsLocallyControlled())) {
                 ServerActivateParry();
@@ -72,7 +72,7 @@ simulated state Release
         if (FireModeNum == Attack_Parry && bParryHitCounter) {
             AttackQueue = Attack_Null;
             ClearTimer('OnStateAnimationEnd');
-            AOCOwner.ConsumeStamina(iFeintStaminaCost);
+            //AOCOwner.ConsumeStamina(iFeintStaminaCost);
             ActivateParry();
             if (WorldInfo.NetMode != NM_Standalone && (Worldinfo.NetMode != NM_ListenServer || !AOCOwner.IsLocallyControlled())) {
                 ServerActivateParry();
@@ -375,7 +375,7 @@ DefaultProperties
 {
     bRequiresComboAnimFix = false;
 
-    fStaminaGainOnHit = 5.0;
+    fStaminaGainOnHit = 10.0;
     fStaminaGainOnRiposteParry = 20.0;
     fMissAdditionalStaminaCost = 10.0;
     fComboMinimumStamina = 1.0;

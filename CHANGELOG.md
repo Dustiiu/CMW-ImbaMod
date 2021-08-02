@@ -1,5 +1,18 @@
 # CompMod5
 
+## 0.0.2
+Waraxe (lul) replaced with Dane Axe
+Parry in riposte no longer takes stamina
+Feint stamina cost 15 -> 10  | This allows someone out of stam to riposte and initiate a combo feint to parry if they hit.
+Hit stamina bonus 5 -> 10    | Before they could riposte but would be locked in release even if they hit someone
+Miss cost 30 -> 20
+Poleaxe release on slash and overhead .55 ->.5
+Greatsword slash base power 90 -> 85
+Braodsword slash windup .5 -> .45 
+Throwing axe raw power 50 -> 30 | That means no more half hp from 1 axe
+Throwing knife damage 32 -> 15
+Some people said that archer had too many weapons so I changed that too :)
+
 ## 0.0.1
 modname=CompMod5
 

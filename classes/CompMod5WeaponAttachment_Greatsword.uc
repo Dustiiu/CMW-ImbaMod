@@ -40,7 +40,7 @@ DefaultProperties
 
     bUseAlternativeKick=true
 
-    AttackTypeInfo(0)=(fBaseDamage=90.0, fForce=33000, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)
+    AttackTypeInfo(0)=(fBaseDamage=85.0, fForce=33000, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)
     AttackTypeInfo(1)=(fBaseDamage=90.0, fForce=33000, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)
     AttackTypeInfo(2)=(fBaseDamage=70.0, fForce=34000, cDamageType="AOC.AOCDmgType_Pierce", iWorldHitLenience=6)
     AttackTypeInfo(3)=(fBaseDamage=100.0, fForce=65000, cDamageType="AOC.AOCDmgType_Swing", iWorldHitLenience=6)

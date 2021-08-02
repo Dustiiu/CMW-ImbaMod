@@ -455,8 +455,8 @@ DefaultProperties
     bWantToFire=false
     CurrentWeaponType = EWEP_Longbow
     // set maximum ammo
-    AmmoCount=30
-    MaxAmmoCount=30
+    AmmoCount=1
+    MaxAmmoCount=1
     AIRange=5000
     bPlayOnWeapon=true
 
