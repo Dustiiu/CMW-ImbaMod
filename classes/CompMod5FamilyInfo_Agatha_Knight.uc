@@ -21,8 +21,8 @@ DefaultProperties
     //NewSecondaryWeapons(4)=(CWeapon=class'CompMod5Weapon_Falchion')
     //NewSecondaryWeapons(5)=(CWeapon=class'CompMod5Weapon_NorseSword')
     //NewSecondaryWeapons(6)=(CWeapon=class'CompMod5Weapon_Hatchet')
-    NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_WarAxe')
-    //NewSecondaryWeapons(8)=(CWeapon=class'CompMod5Weapon_Dane')
+    //NewSecondaryWeapons(7)=(CWeapon=class'CompMod5Weapon_WarAxe')
+    NewSecondaryWeapons(2)=(CWeapon=class'CompMod5Weapon_Dane')
 
 
     NewTertiaryWeapons.empty;

@@ -8,7 +8,8 @@ Hit stamina bonus 5 -> 10    | Before they could riposte but would be locked in 
 Miss cost 30 -> 20
 Poleaxe release on slash and overhead .55 ->.5
 Greatsword slash base power 90 -> 85
-Braodsword slash windup .5 -> .45 
+Halberd Turncap 45000 -> 55000
+Broadsword slash windup .5 -> .45 
 Throwing axe raw power 50 -> 30 | That means no more half hp from 1 axe
 Throwing knife damage 32 -> 15
 Some people said that archer had too many weapons so I changed that too :)

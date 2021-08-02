@@ -148,8 +148,8 @@ DefaultProperties
     WeaponLargePortrait="UI_WeaponImages_SWF.weapon_select_halberd"
     WeaponSmallPortrait="UI_WeaponImages_SWF.icon_weapon_select_halberd_png"
     WeaponReach=100
-    HorizontalRotateSpeed=45000.0
-    VerticalRotateSpeed=45000.0
+    HorizontalRotateSpeed=55000.0
+    VerticalRotateSpeed=55000.0
     AttackHorizRotateSpeed=45000.0
     SprintAttackHorizRotateSpeed=25000.0
     SprintAttackVerticalRotateSpeed=20000.0
