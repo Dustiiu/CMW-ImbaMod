@@ -1,5 +1,10 @@
 # CompMod5
 
+## 0.0.3
+Longbow ammo count 25 -> 5
+Longbow damage 52 -> 20
+
+
 ## 0.0.2
 Waraxe (lul) replaced with Dane Axe
 Parry in riposte no longer takes stamina

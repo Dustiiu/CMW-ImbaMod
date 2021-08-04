@@ -455,8 +455,8 @@ DefaultProperties
     bWantToFire=false
     CurrentWeaponType = EWEP_Longbow
     // set maximum ammo
-    AmmoCount=2
-    MaxAmmoCount=2
+    AmmoCount=5
+    MaxAmmoCount=10
     AIRange=5000
     bPlayOnWeapon=true
 
@@ -502,9 +502,9 @@ DefaultProperties
     /*
      * Formerly in UDKNewWeapon.ini - [AOC.AOCWeapon_Longbow]
      */
-    ConfigProjectileBaseDamage[0]=(Damage=52,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=25,InitialGravityScale=0.4,Drag=0.0000030,PitchCorrection=50)
-    ConfigProjectileBaseDamage[1]=(Damage=53,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=25,InitialGravityScale=0.4,Drag=0.0000030,PitchCorrection=0)
-    ConfigProjectileBaseDamage[2]=(Damage=20,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=15,InitialGravityScale=0.5,Drag=0.000004,PitchCorrection=0)
+    ConfigProjectileBaseDamage[0]=(Damage=20,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=5,InitialGravityScale=0.4,Drag=0.0000030,PitchCorrection=50)
+    ConfigProjectileBaseDamage[1]=(Damage=20,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=5,InitialGravityScale=0.4,Drag=0.0000030,PitchCorrection=0)
+    ConfigProjectileBaseDamage[2]=(Damage=20,InitialSpeed=5000.0,MaxSpeed=5500.0,AmmoCount=5,InitialGravityScale=0.5,Drag=0.000004,PitchCorrection=0)
     ConfigProjectileBaseDamage[3]=(Damage=0,InitialSpeed=0,MaxSpeed=0,AmmoCount=0,InitialGravityScale=0,Drag=0,PitchCorrection=0.0)
     ConfigProjectileBaseDamage[4]=(Damage=0,InitialSpeed=0,MaxSpeed=0,AmmoCount=0,InitialGravityScale=0,Drag=0,PitchCorrection=0.0)
     ConfigProjectileBaseDamage[5]=(Damage=0,InitialSpeed=0,MaxSpeed=0,AmmoCount=0,InitialGravityScale=0,Drag=0,PitchCorrection=0.0)
