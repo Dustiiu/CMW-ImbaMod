@@ -920,7 +920,7 @@ simulated function StartStaminaRegenCooldown()
     bRegenStamina = false;
     SetTimer(fStaminaRegenCooldown, false, 'ResumeStaminaRegen');
 }
-
+//s
 simulated function bool ConsumeStamina( float Amount )
 {
     bInfiniteStamina = false;
