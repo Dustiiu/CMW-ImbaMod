@@ -1,5 +1,9 @@
 # CompMod5
 
+## 0.0.4
+Experimental addition of ranked LTS (@warlock @babber gods)
+Breathing from low stam set to 10%
+
 ## 0.0.3
 Longbow ammo count 25 -> 5
 Longbow damage 52 -> 20

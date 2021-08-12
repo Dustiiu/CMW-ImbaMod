@@ -155,7 +155,9 @@ simulated state Release
                 }
                 ComboHitCount++;
                 iConsecutiveMissCount = 0;
-
+                
+                // Increase PRI.NumHits for successfully landing hits (not including Parry)
+                if (CurrentFireMode != Attack_Parry)
                 AOCowner.NotifyScoreHit();
             }
             else

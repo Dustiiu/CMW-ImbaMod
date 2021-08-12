@@ -11,7 +11,20 @@ reliable server function bool IsAdmin() {
     return WorldInfo.Game.AccessControl.IsAdmin(self) || WorldInfo.NetMode == NM_Standalone;
 }
 
-reliable server function S_AdminBroadcastMessage(string Message, optional bool bShowName=true) {
+function NotifyNotAdmin() {
+    ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+}
+
+
+exec function AdminBroadcastMessage(String Message) {
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
+        return;
+    }
+    S_BroadcastServerMessage(Message);
+}
+
+reliable server function S_BroadcastServerMessage(string Message, optional bool bShowName=true) {
     local AOCPlayerController PC;
     foreach WorldInfo.AllControllers(class'AOCPlayerController', PC) {
         if (bShowName)
@@ -21,48 +34,53 @@ reliable server function S_AdminBroadcastMessage(string Message, optional bool b
     }
 }
 
-exec function AdminBroadcastMessage(String Message) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+reliable server function ServerAdminChangeTeam(String PlayerName)
+{
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage(Message);
+
+    super.ServerAdminChangeTeam(PlayerName);
+
+    S_BroadcastServerMessage("AdminChangeTeam:"@PlayerName);
 }
 
-exec function AdminChangeTeam(String PlayerName) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+reliable server function ServerAdminChangeTeamDamageAmount(float Amount)
+{
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage("AdminChangeTeam "$PlayerName);
-    super.AdminChangeTeam(PlayerName);
+
+    super.ServerAdminChangeTeamDamageAmount(Amount);
+
+    S_BroadcastServerMessage("AdminChangeTeamDamageAmount:"@Amount);
 }
 
-exec function AdminChangeTeamDamageAmount(float Amount) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+
+reliable server function ServerAdminCancelVote()
+{
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage("AdminChangeTeamDamageAmount "$Amount);
-    super.AdminChangeTeamDamageAmount(Amount);
+
+    super.ServerAdminCancelVote();
+
+    S_BroadcastServerMessage("AdminCancelVote");
 }
 
-exec function AdminCancelVote() {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+reliable server function S_AdminReadyAll()
+{
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage("AdminCancelVote");
-    super.AdminCancelVote();
-}
 
-exec function AdminReadyAll() {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
-        return;
-    }
-    S_AdminBroadcastMessage("AdminReadyAll");
-    super.AdminReadyAll();
+    super.S_AdminReadyAll();
+
+    S_BroadcastServerMessage("AdminReadyAll");
 }
 
 function bool SetPause(bool bPause, optional delegate<CanUnpause> CanUnpauseDelegate=CanUnpause) {
@@ -157,6 +175,11 @@ reliable server function ActualUnpause() {
     }
 }*/
 
+function LocalRequestJoinClass(byte inClass)
+{
+    Request_JoinClass(inClass);
+}
+
 exec function GetAdmins() {
     S_GetAdmins();
 }
@@ -173,6 +196,15 @@ reliable server function S_GetAdmins() {
 reliable client function NotifyTournamentWaiting(float Threshold) {
     bShowedTournamentWaitingMessage = true;
 }
+
+exec function AdminTournamentMode(optional bool bEnable = true)
+{
+    ClientDisplayConsoleMessage("Deprecated: use 'Admin TournamentMode' instead");
+    ClientDisplayConsoleMessage("Disable: Admin TournamentMode 0");
+    ClientDisplayConsoleMessage("Enable: Admin TournamentMode 1");
+}
+
+reliable server function S_AdminTournamentMode(bool bEnable) {}
 
 reliable server function S_SendF10Message() {
     ReceiveChatMessage("You will implode in" @ suicideDelay @ "second(s).", EFAC_ALL, false, false, ,false);
@@ -202,7 +234,7 @@ exec function CoinFlip() {
     // Flood protection
     if ( AllowTextMessage("CoinFlip") ) {
         result = ( Rand(100) <= 49 ) ? "Heads!" : "Tails!";
-        S_AdminBroadcastMessage("Flipped a coin and it landed on"@result);
+        S_BroadcastServerMessage("Flipped a coin and it landed on"@result);
     }
 }
 
@@ -228,7 +260,7 @@ exec function RollDice(optional int Dice = 2, optional int Sides = 6) {
         message @= Clamp(Rand(Sides + 1), 1, Sides);
     };
 
-    S_AdminBroadcastMessage(message);
+    S_BroadcastServerMessage(message);
 }
 
 exec function volume(optional string AudioGroup, optional float Value = -1.0f) {
@@ -373,6 +405,66 @@ reliable client function ClientNotifyKilled(AOCPRI Killer, AOCPRI Killed, EAOCFa
     }
 }
 
+exec function ShowStats()
+{
+    local `{GAMEMODE}PRI PRI;
+
+    PRI = `{GAMEMODE}PRI(PlayerReplicationInfo);
+
+    ClientDisplayConsoleMessage("--------------------------------------------------");
+    ClientDisplayConsoleMessage("--------------------------------------------------");
+    ClientDisplayConsoleMessage("Score:"   @ PRI.Score);
+    ClientDisplayConsoleMessage("Kills:"   @ PRI.NumKills);
+    ClientDisplayConsoleMessage("Deaths:"  @ PRI.Deaths);
+    ClientDisplayConsoleMessage("Assists:" @ PRI.NumAssists);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Health:");
+    ClientDisplayConsoleMessage("    Regenerated:"        @ PRI.HealthRegenerated);
+    ClientDisplayConsoleMessage("    Damage Received:");
+    ClientDisplayConsoleMessage("        from all:"       @ PRI.AllDamageTaken);
+    ClientDisplayConsoleMessage("        from enemies:"   @ PRI.DamageTaken);
+    ClientDisplayConsoleMessage("        from teammates:" @ PRI.TeamDamageTaken);
+    ClientDisplayConsoleMessage("    Damage Dealt:");
+    ClientDisplayConsoleMessage("        to enemies:"     @ PRI.EnemyDamageDealt);
+    ClientDisplayConsoleMessage("        to teammates:"   @ PRI.TeamDamageDealt);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Stamina:");
+    ClientDisplayConsoleMessage("    Regenerated:"        @ PRI.StaminaRegenerated);
+    ClientDisplayConsoleMessage("    Damage Received:");
+    ClientDisplayConsoleMessage("        from all:"       @ PRI.AllStaminaConsumed);
+    ClientDisplayConsoleMessage("        from enemies:"   @ PRI.EnemyStaminaDamageTaken);
+    ClientDisplayConsoleMessage("        from teammates:" @ PRI.TeamStaminaDamageTaken);
+    ClientDisplayConsoleMessage("    Damage Dealt:");
+    ClientDisplayConsoleMessage("        to enemies:"     @ PRI.EnemyStaminaDamageDealt);
+    ClientDisplayConsoleMessage("        to teammates:"   @ PRI.TeamStaminaDamageDealt);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Feints:" @ PRI.Feints);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Attacks:");
+    ClientDisplayConsoleMessage("    Total:"      @ PRI.NumAttacks);
+    ClientDisplayConsoleMessage("    Successful:" @ PRI.NumHits);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Hits:");
+    ClientDisplayConsoleMessage("    Melee:"       @ PRI.MeleeHits);
+    ClientDisplayConsoleMessage("    Projectile:"  @ PRI.ProjectileHits);
+    ClientDisplayConsoleMessage("    Light Shove:" @ PRI.LightShoveHits);
+    ClientDisplayConsoleMessage("    Heavy Shove:" @ PRI.HeavyShoveHits);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Parries:" @ PRI.Parries);
+    ClientDisplayConsoleMessage("Blocks:"  @ PRI.Blocks);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Crouches:" @ PRI.Crouches);
+    ClientDisplayConsoleMessage("Jumps:"    @ PRI.Jumps);
+    ClientDisplayConsoleMessage("Dodges:"   @ PRI.Dodges);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Objective Points:" @ PRI.ObjPoints);
+    ClientDisplayConsoleMessage("");
+    ClientDisplayConsoleMessage("Decapitations:"    @ PRI.NumDecaps);
+    ClientDisplayConsoleMessage("Chatter:"    @ PRI.Chatter);
+    ClientDisplayConsoleMessage("--------------------------------------------------");
+    ClientDisplayConsoleMessage("--------------------------------------------------");
+}
+
 exec function ShowMatchupStats(optional string PlayerName) {
     local SPerPRIKillTracking log;
     local string name;
@@ -414,29 +506,37 @@ exec function ShowMatchupStats(optional string PlayerName) {
 }
 
 exec function ce(optional name EventName) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage("CauseEvent "$EventName);
+
+    S_BroadcastServerMessage("CauseEvent:"@EventName);
+
     super.ce(EventName);
 }
 
 exec function CauseEvent(optional name EventName) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
-    S_AdminBroadcastMessage("CauseEvent "$EventName);
+
+    S_BroadcastServerMessage("CauseEvent:"@EventName);
+
     super.CauseEvent(EventName);
 }
 
 exec function AdminGoTo(optional string MapAlias) {
+    S_AdminGoTo(MapAlias);
+}
+
+reliable server function S_AdminGoTo(optional string MapAlias) {
 
     local MapAliasMapping mapping;
 
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+    if (!IsAdmin()) {
+        NotifyNotAdmin();
         return;
     }
 
@@ -472,10 +572,6 @@ exec function AdminGoTo(optional string MapAlias) {
 }
 
 exec function AdminForceSpectate(String PlayerName) {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
-        return;
-    }
     S_AdminForceSpectate(PlayerName);
 }
 
@@ -484,7 +580,7 @@ reliable server function S_AdminForceSpectate(String PlayerName) {
     local String TargetName;
 
     if (!IsAdmin()) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+        NotifyNotAdmin();
         return;
     }
 
@@ -507,14 +603,10 @@ reliable server function S_AdminForceSpectate(String PlayerName) {
 
     Target.JoinSpectatorTeam();
 
-    S_AdminBroadcastMessage("AdminForceSpectate" @ TargetName);
+    S_BroadcastServerMessage("AdminForceSpectate:"@TargetName);
 }
 
 exec function AdminForceSpectateAll() {
-    if (!PlayerReplicationInfo.bAdmin) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
-        return;
-    }
     S_AdminForceSpectateAll();
 }
 
@@ -522,7 +614,7 @@ reliable server function S_AdminForceSpectateAll() {
     local AOCPlayerController Target;
 
     if (!IsAdmin()) {
-        ClientDisplayConsoleMessage("You are not logged in as an administrator on this server.");
+        NotifyNotAdmin();
         return;
     }
 
@@ -539,7 +631,7 @@ reliable server function S_AdminForceSpectateAll() {
         Target.JoinSpectatorTeam();
     }
 
-    S_AdminBroadcastMessage("AdminForceSpectateAll");
+    S_BroadcastServerMessage("AdminForceSpectateAll");
 }
 
 exec function Reload() {
@@ -550,6 +642,63 @@ exec function Reload() {
 exec function PerformAim() {
     if (class<CompMod5Weapon_Crossbow>(Pawn.Weapon.Class) != none)
         StartFire(1);
+}
+
+reliable server function ServerPerformFeint()
+{
+    if (Pawn.Weapon.IsInState('Active') || Pawn.Weapon.IsInState('Feint'))
+        return;
+
+    AOCPawn(Pawn).OnActionInitiated(EACT_Feint);
+    AOCWeapon(Pawn.Weapon).DoFeintAttack();
+
+    `{GAMEMODE}PRI(PlayerReplicationInfo).Feints += 1;
+}
+
+reliable client function OverrideVoteText(optional string Primary, optional string Secondary)
+{
+    AOCBaseHUD(myHUD).HUD.MainHUD.VotePrimaryTitle.SetText(Primary);
+    AOCBaseHUD(myHUD).HUD.MainHUD.VoteSecondaryTitle.SetText(Secondary);
+}
+
+exec function VoteTournamentMode(bool bEnable)
+{
+    ServerVoteTournamentMode(bEnable);
+}
+
+reliable server function ServerVoteTournamentMode(bool bEnable)
+{
+    `{GAMEMODE} (WorldInfo.Game).InitiateVoteTournamentMode(self, bEnable);
+}
+
+exec function VoteRankedMode(bool bEnable)
+{
+    ServerVoteRankedMode(bEnable);
+}
+
+reliable server function ServerVoteRankedMode(bool bEnable)
+{
+    `{GAMEMODE} (WorldInfo.Game).InitiateVoteRankedMode(self, bEnable);
+}
+
+exec function VoteRankedTeamSize(int Size)
+{
+    ServerVoteRankedTeamSize(Size);
+}
+
+reliable server function ServerVoteRankedTeamSize(int Size)
+{
+    `{GAMEMODE} (WorldInfo.Game).InitiateVoteRankedTeamSize(self, Size);
+}
+
+exec function VoteRestartMapAfterEndGame(bool bEnable)
+{
+    ServerVoteRestartMapAfterEndGame(bEnable);
+}
+
+reliable server function ServerVoteRestartMapAfterEndGame(bool bEnable)
+{
+    `{GAMEMODE} (WorldInfo.Game).InitiateVoteRestartMapAfterEndGame(self, bEnable);
 }
 
 
